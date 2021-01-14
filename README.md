@@ -16,3 +16,7 @@ This was a mistake, I don't know why I did that. I think I just wanted to progra
 - Hangman
 
 I tried my best. Did it in two days. I could add more things and some things don't work, but I don't really care...
+
+- Password Generator
+
+I wanted to do this as an exercise to get back to programming after quite a break. I did it in an hour or two so I'm happy with the result, it also seems to work properly.
