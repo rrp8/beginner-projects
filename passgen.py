@@ -9,7 +9,7 @@ numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 spec_signs = [".", "!", "@", "?", "-"]
 
 try:
-    long_inp = int(input("Choose one of these numbers: 8, 16, 24, 32 - "))
+    long_inp = int(input("How long should the password be? "))
 except ValueError:
     long_inp = int(input("Please enter a number: "))
 
