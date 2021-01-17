@@ -1,48 +1,47 @@
-import random, time
+import secrets, time
 import pyperclip
 
-letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w",
-    "x", "y", "z"]
-letters_cap = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
-    "X", "Y", "Z"]
-numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-spec_signs = [".", "!", "@", "?", "-"]
+letters = list("abcdefghijklmnopqrstuvwxyz")
+letters_cap = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+numbers = list("0123456789")
+spec_signs = list(".!@?-%/#$")
 
-try:
-    long_inp = int(input("How long should the password be? "))
-except ValueError:
-    long_inp = int(input("Please enter a number: "))
+# this might be a very weird way to control the lenght of the password but so be it...
+rand_num_pass_long = secrets.randbelow(11) + secrets.randbelow(11)
+if rand_num_pass_long < 10:
+    rand_num_pass_long = rand_num_pass_long + (10 - rand_num_pass_long )
 
 current_pass_lett = []
-div_inp = long_inp / 4
+div_inp = rand_num_pass_long / 4
 
 a = 0
 while div_inp >= a:
-    l = random.choice(letters)
+    l = secrets.choice(letters)
     current_pass_lett.append(l)
 
-    cl = random.choice(letters_cap)
+    cl = secrets.choice(letters_cap)
     current_pass_lett.append(cl)
 
-    n = random.choice(numbers)
+    n = secrets.choice(numbers)
     current_pass_lett.append(n)
 
-    s = random.choice(spec_signs)
+    s = secrets.choice(spec_signs)
     current_pass_lett.append(s)
 
     a += 1
 
 password = []
 while len(current_pass_lett) > 1:
-    gen_pass = random.choice(current_pass_lett)
+    gen_pass = secrets.choice(current_pass_lett)
     current_pass_lett.remove(gen_pass)
     password.append(gen_pass)
 
 comp_pass = ""
 for let in password:
-    comp_pass = comp_pass + let
+    comp_pass += let
 
 pyperclip.copy(comp_pass)
 print("Your password is " + comp_pass + ". The password has been saved in your clipboard.")
 
+# I use this sleep function just in case the window shuts down before the user can see the password
 time.sleep(5)
